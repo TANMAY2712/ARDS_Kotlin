@@ -1,15 +1,17 @@
 package com.ards.ui.login
+
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.ards.databinding.ActivityLoginBinding  // Import generated binding class
+import com.ards.databinding.ActivityLoginBinding
 import com.ards.ui.otp.OtpActivity
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding  // Declare binding variable
+    private lateinit var binding: ActivityLoginBinding
     private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,8 +21,14 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Observe loader state
+        loginViewModel.isLoading.observe(this) { isLoading ->
+            binding.progress.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
+
         binding.btnSendOtp.setOnClickListener {
-            sendOtp(binding.etPhoneNumber.text.toString())
+            val phoneNumber = binding.etPhoneNumber.text.toString()
+            sendOtp(phoneNumber)
         }
     }
 
@@ -29,15 +37,8 @@ class LoginActivity : AppCompatActivity() {
             result.onSuccess { response ->
                 Toast.makeText(this, "OTP Sent Successfully", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, OtpActivity::class.java)
-                intent.putExtra("userMobileNumber", binding.etPhoneNumber.text.toString())
+                intent.putExtra("userMobileNumber", phone)
                 startActivity(intent)
-                /*if (response.SuccessMessage) {
-                    Toast.makeText(this, "OTP Sent Successfully", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, OtpActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, response.SuccessMessage, Toast.LENGTH_SHORT).show()
-                }*/
             }
 
             result.onFailure { error ->

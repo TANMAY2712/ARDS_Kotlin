@@ -14,12 +14,14 @@ import retrofit2.Response
 class OtpRepository {
     private val apiService: ArdsService = ApiFactory.RetrofitClient.createService(ArdsService::class.java)
 
-
-    fun verifyOTP(phone: String,otp: Int): LiveData<Result<VerifyOtpResponse>> {
+    fun verifyOTP(phone: String, otp: Int): LiveData<Result<VerifyOtpResponse>> {
         val liveData = MutableLiveData<Result<VerifyOtpResponse>>()
-        val call = apiService.verifyOTP(VerifyOtpRequest(Constant.ARDS_APIKEY, phone,"91",otp,""))
+
+
+        val call = apiService.verifyOTP(VerifyOtpRequest(Constant.ARDS_APIKEY, phone, "91", otp, ""))
         call.enqueue(object : Callback<VerifyOtpResponse> {
             override fun onResponse(call: Call<VerifyOtpResponse>, response: Response<VerifyOtpResponse>) {
+
                 if (response.isSuccessful) {
                     liveData.value = Result.success(response.body()!!)
                 } else {

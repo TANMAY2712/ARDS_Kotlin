@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.otp.OtpActivity">
 
+
     <ImageView
         android:layout_width="match_parent"
         android:alpha="0.3"
@@ -14,6 +15,18 @@
         android:layout_height="match_parent">
 
     </ImageView>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/purple_500"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
     <RelativeLayout

@@ -2,54 +2,50 @@ package com.ards.ui.otp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.ards.MainActivity
-import com.ards.R
-import com.ards.databinding.ActivityLoginBinding
 import com.ards.databinding.ActivityOtpBinding
-import com.ards.ui.login.LoginViewModel
 
 class OtpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOtpBinding
     private lateinit var mobileNumber: String
     private val verifyViewModel: OtpViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mobileNumber = intent.getStringExtra("userMobileNumber").toString()
         enableEdgeToEdge()
+
         binding = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        mobileNumber = intent.getStringExtra("userMobileNumber").toString()
+        binding.tvPhoneNumber.text = mobileNumber
+
+        verifyViewModel.isLoading.observe(this) { isLoading ->
+            binding.progress.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
         binding.btnVerify.setOnClickListener {
             val otp = binding.pinView.text.toString()
-            // Concatenating all OTP digits
 
-            if(otp.length==6){
-                verifOtp(otp.toInt())
-            }else{
-                Toast.makeText(this, "Enter OTP", Toast.LENGTH_SHORT).show()
-
+            if (otp.length == 6) {
+                verifyOtp(otp.toInt())
+            } else {
+                Toast.makeText(this, "Enter a valid 6-digit OTP", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun verifOtp(otp: Int) {
-        verifyViewModel.verifyOTP(mobileNumber,otp).observe(this) { result ->
-            result.onSuccess { response ->
+    private fun verifyOtp(otp: Int) {
+        verifyViewModel.verifyOTP(mobileNumber, otp).observe(this) { result ->
+
+            result.onSuccess {
                 Toast.makeText(this, "OTP Verified Successfully", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                /*if (response.SuccessMessage) {
-                    Toast.makeText(this, "OTP Sent Successfully", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, OtpActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, response.SuccessMessage, Toast.LENGTH_SHORT).show()
-                }*/
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }
 
             result.onFailure { error ->
