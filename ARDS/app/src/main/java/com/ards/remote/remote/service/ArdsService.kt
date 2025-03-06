@@ -1,10 +1,13 @@
 package com.ards.remote.service
 
+import androidx.lifecycle.LiveData
 import com.ards.domain.model.GenrateOTPRequest
-import com.ards.domain.model.GenrateOTPResponse
-import com.ards.domain.model.VerifyOtpRequest
-import com.ards.domain.model.VerifyOtpResponse
+import com.ards.ui.login.LoginRequest
+import com.ards.ui.otp.OtpRequest
 import com.ards.utils.Constant
+import retrofit2.Call
+import com.ards.remote.apimodel.VerifyOtpResponse
+import com.ards.remote.apimodel.GenrateOTPResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 
@@ -29,7 +32,7 @@ interface ArdsService {
         @Body userDetailsRequest: UserDetailsRequest
     ): LoanDetailResponse*/
 
-    @POST(Constant.ApiEndPoint.GenrateOTP)
+    /*@POST(Constant.ApiEndPoint.GenrateOTP)
     suspend fun genrateOTP(
         @Body loanListRequest: GenrateOTPRequest
     ): GenrateOTPResponse
@@ -37,7 +40,7 @@ interface ArdsService {
     @POST(Constant.ApiEndPoint.VerifyOTP)
     suspend fun verifyOTP(
         @Body pincodeRequest: VerifyOtpRequest
-    ): VerifyOtpResponse
+    ): VerifyOtpResponse*/
 
     /*@POST(Constant.ApiEndPoint.MobileSignup)
     suspend fun getLoanDetails(
@@ -66,6 +69,12 @@ interface ArdsService {
     suspend fun getSubDocumentList(
         @Body subDocumentTypeRequest: SubDocumentTypeRequest
     ): SubDocumentTypeResponse*/
+
+    @POST(Constant.ApiEndPoint.GenrateOTP)
+    fun sendOtp(@Body request: LoginRequest): Call<GenrateOTPResponse>
+
+    @POST(Constant.ApiEndPoint.VerifyOTP)
+    fun verifyOTP(@Body request: OtpRequest): Call<VerifyOtpResponse>
 
 
 }

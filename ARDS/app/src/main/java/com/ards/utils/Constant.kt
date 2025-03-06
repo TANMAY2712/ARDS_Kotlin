@@ -1,12 +1,11 @@
 package com.ards.utils
 
 class Constant {
-
     companion object {
         // Base URLs for APIs
         val BASE_URL = "https://dev.workerunionsupport.com/api/"
         val WUS_ROOMDB = "wusARDSDB.db"
-
+        val ARDS_APIKEY = "AR-AUG-ARST-BIZBR-2019OLLY"
         const val MOBILE = "mobile"
     }
 

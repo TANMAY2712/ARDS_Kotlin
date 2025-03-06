@@ -45,4 +45,17 @@ object ApiFactory {
         logging.level = HttpLoggingInterceptor.Level.BODY
         return logging
     }
+
+    object RetrofitClient {
+        private val retrofit: Retrofit by lazy {
+            Retrofit.Builder()
+                .baseUrl(Constant.BASE_URL) // Use the BASE_URL from Constants.kt
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
+
+        fun <T> createService(serviceClass: Class<T>): T {
+            return retrofit.create(serviceClass)
+        }
+    }
 }

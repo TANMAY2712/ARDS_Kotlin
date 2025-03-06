@@ -1,3 +1,9 @@
-package com.ards.domain.model
+package com.ards.remote.apimodel
 
-data class VerifyOtpRequest (val APIKey:String,val salary:String)
+data class VerifyOtpRequest (
+    val APIKey:String,
+    val Username:String,
+    val CountryCode:String,
+    val OTP:Int,
+    val RefferedCode:String
+)
