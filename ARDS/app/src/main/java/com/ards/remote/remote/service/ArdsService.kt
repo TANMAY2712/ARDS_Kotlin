@@ -1,13 +1,11 @@
 package com.ards.remote.service
 
-import androidx.lifecycle.LiveData
 import com.ards.domain.model.GenrateOTPRequest
-import com.ards.ui.login.LoginRequest
-import com.ards.ui.otp.OtpRequest
 import com.ards.utils.Constant
 import retrofit2.Call
 import com.ards.remote.apimodel.VerifyOtpResponse
 import com.ards.remote.apimodel.GenrateOTPResponse
+import com.ards.remote.apimodel.VerifyOtpRequest
 import retrofit2.http.Body
 import retrofit2.http.POST
 
@@ -71,10 +69,12 @@ interface ArdsService {
     ): SubDocumentTypeResponse*/
 
     @POST(Constant.ApiEndPoint.GenrateOTP)
-    fun sendOtp(@Body request: LoginRequest): Call<GenrateOTPResponse>
+    fun sendOtp(@Body request: GenrateOTPRequest): Call<GenrateOTPResponse>
 
     @POST(Constant.ApiEndPoint.VerifyOTP)
-    fun verifyOTP(@Body request: OtpRequest): Call<VerifyOtpResponse>
+    fun verifyOTP(@Body request: VerifyOtpRequest): Call<VerifyOtpResponse>
+
+
 
 
 }

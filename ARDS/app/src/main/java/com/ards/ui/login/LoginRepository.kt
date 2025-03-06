@@ -4,6 +4,7 @@ import com.ards.remote.service.ArdsService
 import com.wus.loan.remote.ApiFactory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.ards.domain.model.GenrateOTPRequest
 import com.ards.remote.apimodel.GenrateOTPResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +16,7 @@ class LoginRepository {
 
     fun sendOtp(phone: String): LiveData<Result<GenrateOTPResponse>> {
         val liveData = MutableLiveData<Result<GenrateOTPResponse>>()
-        val call = apiService.sendOtp(LoginRequest(phone,"91","tanmay2712d@gmail.com","AR-AUG-ARST-BIZBR-2019OLLY"))
+        val call = apiService.sendOtp(GenrateOTPRequest(phone,"91","tanmay2712d@gmail.com","AR-AUG-ARST-BIZBR-2019OLLY"))
 
         call.enqueue(object : Callback<GenrateOTPResponse> {
             override fun onResponse(call: Call<GenrateOTPResponse>, response: Response<GenrateOTPResponse>) {

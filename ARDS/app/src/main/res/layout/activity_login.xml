@@ -67,8 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter phone number"
-                android:text="+00 0000000 000"
                 android:textSize="16sp"
+                android:background="@null"
                 android:inputType="phone"
                 android:textColor="@color/black" />
         </LinearLayout>

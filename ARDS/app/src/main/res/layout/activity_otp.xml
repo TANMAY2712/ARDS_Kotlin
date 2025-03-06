@@ -37,7 +37,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_margin="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="8dp"
                 app:cardBackgroundColor="@android:color/white">
@@ -82,16 +81,16 @@
                     <!-- OTP Input -->
                     <com.chaos.view.PinView
                         android:id="@+id/pin_view"
+                        android:layout_marginTop="10dp"
                         style="@style/PinWidget.PinView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:cursorVisible="true"
                         android:hint="Hint."
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:cursorWidth="2dp"
-                        app:hideLineWhenFilled="true"
                         app:itemCount="6"
                         app:itemHeight="40dp"
                         app:itemRadius="4dp"
@@ -108,7 +107,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:text="Verify"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/white"
                         android:background="@drawable/button_bg"
                         android:layout_marginTop="12dp" />
@@ -119,7 +118,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Resend OTP"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:layout_marginTop="8dp" />

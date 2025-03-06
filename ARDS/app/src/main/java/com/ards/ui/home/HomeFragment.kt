@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ards.databinding.FragmentHomeBinding
 import com.ards.ui.history.adapter.HistoryAdapter
 import com.ards.ui.history.adapter.RecentAdapter
 import com.ards.ui.history.model.Recent
+import com.ards.ui.home.graph.GraphCardAdapter
+import com.ards.ui.home.graph.GraphData
 
 class HomeFragment : Fragment() {
 
@@ -44,6 +47,17 @@ class HomeFragment : Fragment() {
 
         recentAdapter = RecentAdapter(trainList)
         binding.recentTrainsRecyclerView.adapter = recentAdapter
+
+
+        val graphList = listOf(
+            GraphData("Faults this Month", 54, listOf(10f, 20f, 15f, 30f, 25f, 35f)),
+            GraphData("Corrections this Month", 45, listOf(5f, 15f, 10f, 20f, 18f, 22f)),
+            GraphData("Total Scans this Month", 72, listOf(8f, 25f, 20f, 30f, 28f, 38f))
+        )
+
+        val adapter = GraphCardAdapter(graphList)
+        binding.graphRecyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.graphRecyclerView.adapter = adapter
 
         return root
     }

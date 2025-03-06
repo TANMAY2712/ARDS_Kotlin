@@ -16,18 +16,20 @@ import com.ards.ui.login.LoginViewModel
 
 class OtpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOtpBinding
+    private lateinit var mobileNumber: String
     private val verifyViewModel: OtpViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mobileNumber = intent.getStringExtra("userMobileNumber").toString()
         enableEdgeToEdge()
         binding = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnVerify.setOnClickListener {
             val otp = binding.pinView.text.toString()
-              // Concatenating all OTP digits
+            // Concatenating all OTP digits
 
             if(otp.length==6){
-                verifOtp(otp.toString())
+                verifOtp(otp.toInt())
             }else{
                 Toast.makeText(this, "Enter OTP", Toast.LENGTH_SHORT).show()
 
@@ -35,8 +37,8 @@ class OtpActivity : AppCompatActivity() {
         }
     }
 
-    private fun verifOtp(otp: String) {
-        verifyViewModel.verifyOTP("8299112349",otp).observe(this) { result ->
+    private fun verifOtp(otp: Int) {
+        verifyViewModel.verifyOTP(mobileNumber,otp).observe(this) { result ->
             result.onSuccess { response ->
                 Toast.makeText(this, "OTP Verified Successfully", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)

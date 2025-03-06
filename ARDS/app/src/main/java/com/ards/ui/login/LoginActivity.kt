@@ -1,5 +1,4 @@
 package com.ards.ui.login
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -21,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSendOtp.setOnClickListener {
-            sendOtp("8299112349")
+            sendOtp(binding.etPhoneNumber.text.toString())
         }
     }
 
@@ -30,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
             result.onSuccess { response ->
                 Toast.makeText(this, "OTP Sent Successfully", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, OtpActivity::class.java)
+                intent.putExtra("userMobileNumber", binding.etPhoneNumber.text.toString())
                 startActivity(intent)
                 /*if (response.SuccessMessage) {
                     Toast.makeText(this, "OTP Sent Successfully", Toast.LENGTH_SHORT).show()
