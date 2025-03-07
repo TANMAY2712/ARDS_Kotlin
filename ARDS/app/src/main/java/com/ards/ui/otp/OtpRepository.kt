@@ -1,9 +1,9 @@
 package com.ards.ui.otp
 
 import com.ards.remote.service.ArdsService
-import com.wus.loan.remote.ApiFactory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.ards.remote.ApiFactory
 import com.ards.remote.apimodel.VerifyOtpRequest
 import com.ards.remote.apimodel.VerifyOtpResponse
 import com.ards.utils.Constant

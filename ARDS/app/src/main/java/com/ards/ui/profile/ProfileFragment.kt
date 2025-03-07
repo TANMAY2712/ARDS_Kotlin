@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ards.R
 import com.ards.databinding.FragmentHistoryBinding
 import com.ards.databinding.FragmentProfileBinding
 import com.ards.ui.profile.adapter.ProfileMenuAdapter
 import com.ards.ui.profile.model.MenuItem
+import com.ards.utils.Constant
 
 class ProfileFragment : Fragment() {
 
@@ -43,7 +45,25 @@ class ProfileFragment : Fragment() {
             MenuItem("Manage Users", R.drawable.bell)
         )
 
-        val adapter = ProfileMenuAdapter(menuItems)
+        val adapter = ProfileMenuAdapter(menuItems,
+            object : ProfileMenuAdapter.Callback {
+                override fun onItemClicked(
+                    title: String
+                ) {
+                    if(title == "Notification"){
+                        Navigation.findNavController(binding.recyclerMenu)
+                            .navigate(R.id.action_profileFragment_to_notificationFragment)
+                    }else if(title == "Help & Support"){
+                        Constant.showShortToast("Work in Progress",requireContext())
+                    }else if(title == "Language"){
+                        Constant.showShortToast("Work in Progress",requireContext())
+                    }else if(title == "Contact Us"){
+                        Constant.showShortToast("Work in Progress",requireContext())
+                    }else if(title == "Manage Users"){
+                        Constant.showShortToast("Work in Progress",requireContext())
+                    }
+                }
+            })
         binding.recyclerMenu.layoutManager = LinearLayoutManager(context)
         binding.recyclerMenu.adapter = adapter
 

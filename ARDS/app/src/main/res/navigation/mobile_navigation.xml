@@ -18,16 +18,27 @@
         tools:layout="@layout/fragment_library" />
 
     <fragment
-        android:id="@+id/navigation_history"
-        android:name="com.ards.ui.history.HistoryFragment"
-        android:label="@string/title_history"
-        tools:layout="@layout/fragment_history" />
-
-    <fragment
         android:id="@+id/navigation_profile"
         android:name="com.ards.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.ards.ui.notification.NotificationListFragment"
+        android:label="@string/title_notification"
+        tools:layout="@layout/fragment_notification"/>
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.ards.ui.history.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history"/>
+
     <fragment
         android:id="@+id/navigation_scan"
         android:name="com.ards.ui.scan.ScanFragment"

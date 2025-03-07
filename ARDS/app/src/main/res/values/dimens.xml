@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="login_button_bg_radius">40dp</dimen>
+    <!-- bg_circle_login.xml START -->
+    <dimen name="bg_circle_login_success_innerRadius">0dp</dimen>
+    <dimen name="bg_circle_login_success_strokeWidth">4dp</dimen>
+    <!-- bg_circle_login.xml END-->
 </resources>

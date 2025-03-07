@@ -65,4 +65,6 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation ("io.github.chaosleung:pinview:1.4.4")
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation ("com.google.android.gms:play-services-auth-api-phone:17.5.0")
+
 }

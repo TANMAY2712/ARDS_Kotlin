@@ -1,4 +1,4 @@
-package com.ards.domain.model
+package com.ards.remote.apimodel
 
 data class GenrateOTPRequest(
     val Username: String,

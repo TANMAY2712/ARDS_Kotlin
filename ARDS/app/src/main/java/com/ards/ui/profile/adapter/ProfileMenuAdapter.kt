@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ards.R
 import com.ards.ui.profile.model.MenuItem
 
-class ProfileMenuAdapter(private val menuList: List<MenuItem>) :
+class ProfileMenuAdapter(private val menuList: List<MenuItem>, private var callback: Callback) :
     RecyclerView.Adapter<ProfileMenuAdapter.MenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
@@ -21,6 +21,12 @@ class ProfileMenuAdapter(private val menuList: List<MenuItem>) :
         val menuItem = menuList[position]
         holder.tvMenuTitle.text = menuItem.title
         holder.imgIcon.setImageResource(menuItem.icon)
+        holder.itemView.setOnClickListener {
+            //holder.itemView.applyWUSViewAnimation()
+            callback.onItemClicked(
+                menuItem.title
+            )
+        }
     }
 
     override fun getItemCount(): Int = menuList.size
@@ -28,5 +34,9 @@ class ProfileMenuAdapter(private val menuList: List<MenuItem>) :
     class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgIcon: ImageView = itemView.findViewById(R.id.imgIcon)
         val tvMenuTitle: TextView = itemView.findViewById(R.id.tvMenuTitle)
+    }
+
+    interface Callback {
+        fun onItemClicked(title: String)
     }
 }

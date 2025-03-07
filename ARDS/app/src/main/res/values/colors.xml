@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#E1DFDF</color>
     <color name="off_white">#f1f0ef</color>
+
+    <color name="bg_circle_login_success_solid_color">#F3F6FD</color>
+    <color name="bg_circle_login_success_stroke_color">#F5F5F5</color>
+
 </resources>

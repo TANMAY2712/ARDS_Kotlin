@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="doc_appointment_et_name_max_length">50</integer>
+    <integer name="doc_appointment_et_phone_number_length">10</integer>
+    <integer name="splash_screen_gradient_angle">90</integer>
+    <integer name="button_bg_gradient_angle">-135</integer>
+    <integer name="phone_number_editText_length">10</integer>
+    <integer name="maximum_lines_trending_doc_title_home">2</integer>
+    <integer name="maximum_lines_quick_links_title">2</integer>
+
+    <integer name="pincode_editText_length">6</integer>
+    <integer name="maxdatelength">12</integer>
+    <integer name="referenceid_editText_length">14</integer>
+
+    <integer name="bg_banner_light_circle_home_thicknessRatio">4</integer>
+    <integer name="bg_banner_circle_home_thicknessRatio">7</integer>
+
+    <integer name="bg_circle_grievance_thickNessRatio">2</integer>
+
+    <integer name="bg_circle_grievance_plus_btn_thickNessRatio">2</integer>
+
+    <integer name="bg_circle_login_success_thicknessRatio">2</integer>
+
+    <integer name="bg_circle_trending_docs_thicknessRatio">2</integer>
+
+    <integer name="bg_circle_user_thicknessRatio">2</integer>
+
+    <integer name="bg_user_image_home_thicknessRatio">2</integer>
+
+    <!-- share button Start-->
+    <integer name ="share_viewportHeight">24</integer>
+    <integer name ="share_viewportWidth">24</integer>
+    <!-- share button End-->
+
+    <!-- Share button Start-->
+    <integer name="drawable_share_24_viewport_height">24</integer>
+    <integer name="drawable_share_24_viewport_width">24</integer>
+    <!--<integer name="drawable_share_24_alpha">0.96</integer>-->
+    <!-- Share button End-->
+    <!-- WUS_CAREER_ACTIVITY START -->
+    <integer name="wus_career_aadhar_number_length">12</integer>
+    <!-- WUS_CAREER_ACTIVITY END -->
+
+    <!-- Dashboard_Fragment START -->
+    <integer name="dashboard_fragment_view_pager_leftPadding">10</integer>
+    <integer name="dashboard_fragment_view_pager_rightPadding">60</integer>
+    <integer name="dashboard_fragment_view_pager_topPadding">0</integer>
+    <integer name="dashboard_fragment_view_pager_bottomPadding">0</integer>
+    <integer name="dashboard_fragment_view_pager_margin">20</integer>
+    <!-- Dashboard_Fragment END -->
+
+</resources>
